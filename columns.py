@@ -80,6 +80,7 @@ df_columns = [
     "Pwgt_R",
     "F_PWGT",
     "DWgt_R",
+    "F_DWGT",
     "WTGAIN",
     "WTGAIN_REC",
     "F_WTGAIN",
@@ -228,4 +229,4 @@ df_columns = [
     "F_BFED"
     ]
 
-# df_columns
+len(df_columns)
