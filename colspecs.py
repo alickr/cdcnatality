@@ -1,4 +1,4 @@
-colspecs = [
+list_colspecs = [
     (8,12),
     (12,14),
     (18,22),

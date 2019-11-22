@@ -1,4 +1,4 @@
-df_columns = [
+list_columns = [
     "DOB_YY",
     "DOB_MM",
     "DOB_TT",
