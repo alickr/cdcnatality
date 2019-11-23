@@ -3,6 +3,8 @@ data/
 data_raw/
 guides/
 .DS_Store
+Nat2018PublicUS.c20190509.r20190717.txt
+csv/
 
 # Visual Studio Code
 .vscode/*
