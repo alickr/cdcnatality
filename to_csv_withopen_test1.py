@@ -10,7 +10,7 @@ from io import StringIO
 import os
 
 # Read Files in 1Mb Chunks
-file_path = "Nat2018PublicUS.c20190509.r20190717.txt"
+file_path = "./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt"
 infile = open(file_path, 'rb')
 
 infile_size = os.path.getsize(file_path)
@@ -45,7 +45,7 @@ def read_in_chunks(infile, chunk_size=1024*64):
             return
 
 
-read_in_chunks(infile, chunk_size) # Uncomment To Run Test Function Call
+# read_in_chunks(infile, chunk_size) # Uncomment To Run Function
 
 print("Done!")
 print ('Execution Time: ', time.time()- start ,' Seconds')
