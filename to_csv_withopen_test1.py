@@ -1,3 +1,6 @@
+import time
+start = time.time()
+
 import pandas as pd
 import numpy as np
 from columns import * # Column Headers
@@ -44,6 +47,5 @@ def read_in_chunks(infile, chunk_size=1024*64):
 
 read_in_chunks(infile, chunk_size) # Uncomment To Run Test Function Call
 
-
-
 print("Done!")
+print ('Execution Time: ', time.time()- start ,' Seconds')
