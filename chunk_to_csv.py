@@ -45,7 +45,7 @@ def read_in_chunks(infile, chunk_size=1024*64):
             return
 
 
-# read_in_chunks(infile, chunk_size) # Uncomment To Run Function
+read_in_chunks(infile, chunk_size) # Uncomment To Run Function
 
 print("Done!")
 print ('Execution Time: ', time.time()- start ,' Seconds')
