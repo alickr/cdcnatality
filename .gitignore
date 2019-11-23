@@ -5,6 +5,7 @@ guides/
 .DS_Store
 Nat2018PublicUS.c20190509.r20190717.txt
 csv/
+.Rhistory
 
 # Visual Studio Code
 .vscode/*
