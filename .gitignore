@@ -6,6 +6,8 @@ guides/
 Nat2018PublicUS.c20190509.r20190717.txt
 csv/
 .Rhistory
+test.py
+cdc.csv
 
 # Visual Studio Code
 .vscode/*

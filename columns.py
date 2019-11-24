@@ -229,4 +229,4 @@ list_columns = [
     "F_BFED"
     ]
 
-# len(df_columns)
+len(list_columns)

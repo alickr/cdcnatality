@@ -1,8 +1,10 @@
 import csv
 import pandas as pd
 
-f = open("Nat2018PublicPS.c20190509.r20190710.txt", "r")
-k = open("Nat2018PublicUS.c20190509.r20190717.txt","r")
+file_path = "./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt"
+
+# f = open("./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt", "r")
+k = open(file_path)
 
 file = open('cdc.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
