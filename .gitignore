@@ -4,10 +4,12 @@ data_raw/
 guides/
 .DS_Store
 Nat2018PublicUS.c20190509.r20190717.txt
-csv/
+# csv/
 .Rhistory
 test.py
 cdc.csv
+# exclude everything
+csv/*
 
 # Visual Studio Code
 .vscode/*

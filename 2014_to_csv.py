@@ -1,24 +1,27 @@
+import time
+start = time.time()
+
 import csv
 import pandas as pd
 
-file_path = "./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt"
+file_path = "./data/Nat2014us/Nat2014PublicUS.c20150514.r20151022.txt"
 
 # f = open("./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt", "r")
 k = open(file_path)
 
-file = open('cdc_2018.csv', 'w', encoding='utf-8', newline='')
+file = open('Nat2014us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(['DOB_YY','DOB_MM' ,'DOB_TT', 'DOB_WK', 'BFACIL', 'F_FACILITY','BFACIL3', 'MAGE_IMPFLG', \
     'MAGE_REPFLG','MAGER','MAGER14','MAGER9','MBSTATE_REC', 'RESTATUS','MRACE31','MRACE6', 'MRACE15', 'MBRACE', \
-    'MRACEIMP','MHISPX', 'MHISP_R', 'F_MHISP','MRACEHISP', 'MAR_P', 'DMAR', 'MAR_IMP', 'F_MAR_P', 'MEDUC', 'F_MEDUC', \
-    'FAGERPT_FLG', 'FAGECOMB', 'FAGEREC11', 'FRACE31', 'FRACE6', 'FRACE15', 'FHISPX', 'FHISP_R', 'F_FHISP', \
-    'FRACEHISP', 'FEDUC', 'f_FEDUC', 'PRIORLIVE', 'PRIORDEAD', 'PRIORTERM', 'LBO_REC', 'TBO_REC', 'ILLB_R', \
+    'MRACEIMP', 'MHISP_R', 'F_MHISP','MRACEHISP', 'MAR_P', 'DMAR', 'MAR_IMP', 'F_MAR_P', 'MEDUC', 'F_MEDUC', \
+    'FAGERPT_FLG', 'FAGECOMB', 'FAGEREC11', 'FRACE31', 'FRACE6', 'FRACE15','FBRACE', 'FHISP_R', 'F_FHISP', \
+    'FRACEHISP', 'FEDUC', 'F_FEDUC', 'PRIORLIVE', 'PRIORDEAD', 'PRIORTERM', 'LBO_REC', 'TBO_REC', 'ILLB_R', \
     'ILLB_R11', 'ILOP_R', 'ILOP_R11', 'ILP_R', 'ILP_R11', 'PRECARE', 'F_MPCB', 'PRECARE5', 'PREVIS', 'PREVIS_REC', \
     'F_TPCV', 'WIC', 'F_WIC', 'CIG_0', 'CIG_1','CIG_2','CIG_3', 'CIG0_R', 'CIG1_R', 'CIG2_R','CIG3_R', 'F_CIGS_0', \
     'F_CIGS_1','F_CIGS_2','F_CIGS_3','CIG_REC','F_TOBACO','M_Ht_In','F_M_HT','BMI','BMI_R','PWgt_R','F_PWGT', \
     'DWgt_R', 'F_DWGT','WTGAIN','WTGAIN_REC','F_WTGAIN','RF_PDIAB','RF_GDIAB','RF_PHYPE','RF_GHYPE','RF_EHYPE', \
     'RF_PPTERM','F_RF_PDIAB','F_RF_GDIAB','F_RF_PHYPER','F_RF_GHYPER','F_RF_ECLAMP','F_RF_PPB','RF_INFTR', \
-    'RF_FEDRG','RF_ARTEC','f_RF_INFT','F_RF_INF_DRG','F_RF_INF_ART','RF_CESAR','RF_CESARN','F_RF_CESAR', \
+    'RF_FEDRG','RF_ARTEC','F_RF_INF_DRG','F_RF_INF_ART','RF_CESAR','RF_CESARN','F_RF_CESAR', \
     'F_RF_NCESAR','NO_RISKS','IP_GON','IP_SYPH','IP_CHLAM','IP_HEPB','IP_HEPC','F_IP_GONOR','F_IP_SYPH', \
     'F_IP_CHLAM','F_IP_HEPATB','F_IP_HEPATC','NO_INFEC','OB_ECVS','OB_ECVF','F_OB_SUCC','F_OB_FAIL','LD_INDL', \
     'LD_AUGM','LD_STER','LD_ANTB','LD_CHOR','LD_ANES','F_LD_INDL','F_LD_AUGM','F_LD_STER','F_LD_ANTB','F_LD_CHOR', \
@@ -31,7 +34,9 @@ output.writerow(['DOB_YY','DOB_MM' ,'DOB_TT', 'DOB_WK', 'BFACIL', 'F_FACILITY','
     'F_AB_VENT6','F_AB_NIUC','F_AB_SURFAC','F_AB_ANTIBIO','F_AB_SEIZ','NO_ABNORM','CA_ANEN','CA_MNSB','CA_CCHD', \
     'CA_CDH','CA_OMPH','CA_GAST','F_CA_ANEN','F_CA_MENIN','F_CA_HEART','F_CA_HERNIA','F_CA_OMPHA','F_CA_GASTRO', \
     'CA_LIMB','CA_CLEFT','CA_CLPAL','CA_DOWN','CA_DISOR','CA_HYPO','F_CA_LIMB','F_CA_CLEFTLP','F_CA_CLEFT', \
-    'F_CA_DOWNS','F_CA_CHROM','F_CA_HYPOS','NO_CONGEN','ITRAN','ILIVE','BFED','F_BFED']) 
+    'F_CA_DOWNS','F_CA_CHROM','F_CA_HYPOS','NO_CONGEN','ITRAN','ILIVE','BFED','F_BFED', \
+    'UBFACIL','URF_DIAB','URF_CHYPER','URF_PHYPER','URF_ECLAM','UME_FORCP','UME_VAC','UOP_INDUC','ULD_BREECH','UCA_ANEN','UCA_SPINA','UCA_OMPHA','UCA_CELFTLP','UCA_HERNIA','UCA_DOWNS']) 
+
 
 
  
@@ -56,7 +61,7 @@ for kine in k.readlines():
     df['MRACE15'] = kine[107:109]
     df['MBRACE'] = kine[109:110]
     df['MRACEIMP'] = kine[110:111]
-    df['MHISPX'] = kine[111:112]
+# df['MHISPX'] = kine[111:112] not exist
     df['MHISP_R'] = kine[114:115]
     df['F_MHISP'] = kine[115:116]
     df['MRACEHISP'] = kine[116:117]
@@ -72,12 +77,14 @@ for kine in k.readlines():
     df['FRACE31'] = kine[150:152]
     df['FRACE6'] = kine[152:153]
     df['FRACE15'] = kine[153:155]
-    df['FHISPX'] = kine[158:159]
+    df['FBRACE'] = kine[155:156] # exists here not in 2018
+# df['FHISPX'] = kine[158:159] not exist
     df['FHISP_R'] = kine[159:160]
     df['F_FHISP'] = kine[160:161]
     df['FRACEHISP'] = kine[161:162]
     df['FEDUC'] = kine[162:163]
-    df['f_FEDUC'] = kine[164:165]
+    # df['f_FEDUC'] = kine[164:165] used small f instead of F
+    df['F_FEDUC'] = kine[164:165]
     df['PRIORLIVE'] = kine[170:172]
     df['PRIORDEAD'] = kine[172:174]
     df['PRIORTERM'] = kine[174:176]
@@ -137,7 +144,7 @@ for kine in k.readlines():
     df['RF_INFTR'] = kine[324:325]
     df['RF_FEDRG'] = kine[325:326]
     df['RF_ARTEC'] = kine[326:327]
-    df['f_RF_INFT'] = kine[327:328]
+    # df['f_RF_INFT'] = kine[327:328] not exist
     df['F_RF_INF_DRG'] = kine[328:329]
     df['F_RF_INF_ART'] = kine[329:330]
     df['RF_CESAR'] = kine[330:331]
@@ -199,7 +206,7 @@ for kine in k.readlines():
     df['PAY_REC'] = kine[435:436]
     df['F_PAY'] = kine[436:437]
     df['F_PAY_REC'] = kine[437:438] 
-    df['APGAR5'] = kine[443:445] 
+    df['APGAR5'] = kine[443:445]
     df['APGAR5R'] = kine[445:446]
     df['F_APGAR5'] = kine[446:447]
     df['APGAR10'] = kine[447:449]
@@ -265,7 +272,24 @@ for kine in k.readlines():
     df['ILIVE'] = kine[567:568]
     df['BFED'] = kine[568:569]
     df['F_BFED'] = kine[569:570]
+
+    # Below Exist Extra vs. 2018
+    df['UBFACIL'] = kine[1329:1330]
+    df['URF_DIAB'] = kine[1330:1331]
+    df['URF_CHYPER'] = kine[1331:1332]
+    df['URF_PHYPER'] = kine[1332:1333]
+    df['URF_ECLAM'] = kine[1333:1334]
+    df['UME_FORCP'] = kine[1334:1335]
+    df['UME_VAC'] = kine[1335:1336]
+    df['UOP_INDUC'] = kine[1336:1337]
+    df['ULD_BREECH'] = kine[1337:1338]
+    df['UCA_ANEN'] = kine[1339:1340]
+    df['UCA_SPINA'] = kine[1340:1341]
+    df['UCA_OMPHA'] = kine[1341:1342]
+    df['UCA_CELFTLP'] = kine[1342:1343]
+    df['UCA_HERNIA'] = kine[1343:1344]
+    df['UCA_DOWNS'] = kine[1344:1345]
     output.writerow(df.values())
 
-
-print('done')
+print("Done!")
+print ('Execution Time: ', time.time()- start ,' Seconds')
