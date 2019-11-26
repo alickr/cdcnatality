@@ -29,8 +29,8 @@ for line in fh:
     # print(type(line))
     df = pd.read_fwf(data, colspecs=list_colspecs, header=None, )
     # print(type(df))
-    df.to_csv('./csv/2018_briths.csv', mode='a', header=False, index=False)
-    print("Line # ",count)
+    df.to_csv('./csv/2018_briths_no_print.csv', mode='a', header=False, index=False)
+    # print("Line # ",count)
     count += 1
 
     # print(line)
