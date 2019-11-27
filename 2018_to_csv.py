@@ -1,16 +1,21 @@
+import time
+start = time.time()
+
 import csv
 import pandas as pd
 
-f = open("Nat2018PublicPS.c20190509.r20190710.txt", "r")
-k = open("Nat2018PublicUS.c20190509.r20190717.txt","r")
+file_path = "./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt"
 
-file = open('cdc.csv', 'w', encoding='utf-8', newline='')
+# f = open("./data/Nat2018us/Nat2018PublicUS.c20190509.r20190717.txt", "r")
+k = open(file_path)
+
+file = open('Nat2018us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(['DOB_YY','DOB_MM' ,'DOB_TT', 'DOB_WK', 'BFACIL', 'F_FACILITY','BFACIL3', 'MAGE_IMPFLG', \
     'MAGE_REPFLG','MAGER','MAGER14','MAGER9','MBSTATE_REC', 'RESTATUS','MRACE31','MRACE6', 'MRACE15', 'MBRACE', \
     'MRACEIMP','MHISPX', 'MHISP_R', 'F_MHISP','MRACEHISP', 'MAR_P', 'DMAR', 'MAR_IMP', 'F_MAR_P', 'MEDUC', 'F_MEDUC', \
     'FAGERPT_FLG', 'FAGECOMB', 'FAGEREC11', 'FRACE31', 'FRACE6', 'FRACE15', 'FHISPX', 'FHISP_R', 'F_FHISP', \
-    'FRACEHISP', 'FEDUC', 'f_FEDUC', 'PRIORLIVE', 'PRIORDEAD', 'PRIORTERM', 'LBO_REC', 'TBO_REC', 'ILLB_R', \
+    'FRACEHISP', 'FEDUC', 'F_FEDUC', 'PRIORLIVE', 'PRIORDEAD', 'PRIORTERM', 'LBO_REC', 'TBO_REC', 'ILLB_R', \
     'ILLB_R11', 'ILOP_R', 'ILOP_R11', 'ILP_R', 'ILP_R11', 'PRECARE', 'F_MPCB', 'PRECARE5', 'PREVIS', 'PREVIS_REC', \
     'F_TPCV', 'WIC', 'F_WIC', 'CIG_0', 'CIG_1','CIG_2','CIG_3', 'CIG0_R', 'CIG1_R', 'CIG2_R','CIG3_R', 'F_CIGS_0', \
     'F_CIGS_1','F_CIGS_2','F_CIGS_3','CIG_REC','F_TOBACO','M_Ht_In','F_M_HT','BMI','BMI_R','PWgt_R','F_PWGT', \
@@ -30,7 +35,6 @@ output.writerow(['DOB_YY','DOB_MM' ,'DOB_TT', 'DOB_WK', 'BFACIL', 'F_FACILITY','
     'CA_CDH','CA_OMPH','CA_GAST','F_CA_ANEN','F_CA_MENIN','F_CA_HEART','F_CA_HERNIA','F_CA_OMPHA','F_CA_GASTRO', \
     'CA_LIMB','CA_CLEFT','CA_CLPAL','CA_DOWN','CA_DISOR','CA_HYPO','F_CA_LIMB','F_CA_CLEFTLP','F_CA_CLEFT', \
     'F_CA_DOWNS','F_CA_CHROM','F_CA_HYPOS','NO_CONGEN','ITRAN','ILIVE','BFED','F_BFED']) 
-
 
  
 for kine in k.readlines():
@@ -75,7 +79,7 @@ for kine in k.readlines():
     df['F_FHISP'] = kine[160:161]
     df['FRACEHISP'] = kine[161:162]
     df['FEDUC'] = kine[162:163]
-    df['f_FEDUC'] = kine[164:165]
+    df['F_FEDUC'] = kine[164:165]
     df['PRIORLIVE'] = kine[170:172]
     df['PRIORDEAD'] = kine[172:174]
     df['PRIORTERM'] = kine[174:176]
@@ -265,5 +269,5 @@ for kine in k.readlines():
     df['F_BFED'] = kine[569:570]
     output.writerow(df.values())
 
-
-print('done')
+print("Done!")
+print ('Execution Time: ', time.time()- start ,' Seconds')

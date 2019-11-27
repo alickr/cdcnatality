@@ -17,7 +17,7 @@ infile_size = os.path.getsize(file_path)
 print("Total File Size Loaded (Bytes): ",infile_size)
 
 # chunk_size=1024*64 #64kb
-chunk_size=1024 * 1024 #1048576 bytes = 1024kb = 1Mb
+chunk_size=1024 * 10240 #1048576 bytes = 1024kb = 1Mb
 chunks_number = infile_size//chunk_size # Integer division Result
 print("Chunk Size: ",chunk_size," Total Number of Chunks is: ",chunks_number)
 
@@ -36,7 +36,7 @@ def read_in_chunks(infile, chunk_size=1024*64):
 
             df = pd.read_fwf(data, colspecs=list_colspecs, header=None, )
             # print(type(df))
-            df.to_csv('./csv/2018_final.csv', mode='a', header=False)
+            df.to_csv('./csv/2018_final2.csv', mode='a', header=False, index=False)
             print("Chunk # ",count,"/",chunks_number)
             count += 1
         else:

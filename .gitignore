@@ -4,8 +4,17 @@ data_raw/
 guides/
 .DS_Store
 Nat2018PublicUS.c20190509.r20190717.txt
+2015/Nat2015PublicUS.c20160517.r20160907.txt
+2015/UserGuide2015.pdf
+2018/Nat2018PublicUS.c20190509.r20190717.txt
+2018/UserGuide2018.pdf
+__pycache__
 csv/
 .Rhistory
+test.py
+cdc.csv
+# exclude everything
+csv/*
 
 # Visual Studio Code
 .vscode/*
