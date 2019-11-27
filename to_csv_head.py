@@ -3,12 +3,12 @@ import numpy as np
 from columns import * # Column Headers
 from colspecs import * # Column length specs
 
-df = pd.read_fwf('Nat2018Head.txt', colspecs=list_colspecs, header=None, )
+df = pd.read_fwf('Nat2018Head_copy.txt', colspecs=list_colspecs, header=None, )
 
 df.columns = list_columns
 print(df)
 type(df)
-
+df['MBSTATE_REC']
 # ----------------------------- Create File to Submit --------------------------------
 # df = pd.DataFrame({'name': ['Raphael', 'Donatello'],
 # ...                    'mask': ['red', 'purple'],

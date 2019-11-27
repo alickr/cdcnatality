@@ -1,4 +1,4 @@
-list_columns = [
+list_columns_2015 = [
     "DOB_YY",
     "DOB_MM",
     "DOB_TT",
@@ -18,7 +18,7 @@ list_columns = [
     "MRACE15",
     "MBRACE",
     "MRACEIMP",
-    "MHISPX",
+    #"MHISPX",
     "MHISP_R",
     "F_MHISP",
     "MRACEHISP",
@@ -34,7 +34,7 @@ list_columns = [
     "FRACE31",
     "FRACE6",
     "FRACE15",
-    "FHISPX",
+    #"FHISPX",
     "FHISP_R",
     "F_FHISP",
     "FRACEHISP",
@@ -99,7 +99,7 @@ list_columns = [
     "RF_INFTR",
     "RF_FEDRG",
     "RF_ARTEC",
-    "f_RF_INFT",
+    #"f_RF_INFT",
     "F_RF_INF_DRG",
     "F_RF_INF_ART",
     "RF_CESAR",
@@ -226,7 +226,22 @@ list_columns = [
     "ITRAN",
     "ILIVE",
     "BFED",
-    "F_BFED"
+    "F_BFED",
+    'UBFACIL',
+    'URF_DIAB',
+    'URF_CHYPER',
+    'URF_PHYPER',
+    'URF_ECLAM',
+    'UME_FORCP',
+    'UME_VAC',
+    'UOP_INDUC',
+    'ULD_BREECH',
+    'UCA_ANEN',
+    'UCA_SPINA',
+    'UCA_OMPHA',
+    'UCA_CELFTLP',
+    'UCA_HERNIA',
+    'UCA_DOWNS'
     ]
 
-len(list_columns)
+# len(df_columns)
