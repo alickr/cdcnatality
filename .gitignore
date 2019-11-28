@@ -1,5 +1,5 @@
 # General Files
-dask/
+# dask/
 data/
 data_raw/
 guides/
@@ -16,7 +16,7 @@ test.py
 cdc.csv
 # exclude everything
 csv/*
-pyspark/
+# pyspark/
 # Visual Studio Code
 .vscode/*
 !.vscode/settings.json
