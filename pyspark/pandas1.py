@@ -30,9 +30,9 @@ cwd
 train_df = train_df.apply(lambda x: x.str.strip() if x.dtype == 'object' else x)
 train_df_cp = train_df.copy()
 train_df_cp = train_df_cp.loc[train_df_cp['native-country'] != 'Holand-Netherlands']
-train_df_cp.to_csv('./train.csv', index=False, header=False)
+train_df_cp.to_csv('./pyspark/train.csv', index=False, header=False)
 test_df = test_df.apply(lambda x: x.str.strip() if x.dtype == 'object' else x)
-test_df.to_csv('./test.csv', index=False, header=False)
+test_df.to_csv('./pyspark/test.csv', index=False, header=False)
 
 print('Training data shape: ', train_df.shape)
 train_df.head()
