@@ -43,3 +43,32 @@ prepd.first().count()
 preht = df_2016.groupby(['RF_PHYPE'])
 preht.first()
 preht.first().count()
+
+
+ #single mother with down syndrome
+# sngm = df_2016.groupby(['MAGER'],['CA_DOWN'])
+# sngm.first()
+
+# smoking = pd.read_csv('csv_folder/2016.csv')
+
+
+# objects = smoking['CIG_0']
+# y_pos = np.arange(len(objects))
+# width = .1
+
+# smoking = (smoking['DOB_YY'])
+
+
+# plt.figure(figsize=(10,10))
+
+# plt.barh(y_pos +width, smoking, align='center', color = 'grey' , label='smoking')
+
+
+
+# plt.yticks(y_pos, objects)
+# plt.xlabel('DOB_YY')
+# plt.title('FIGURE 19.  Women Who Are Smoker before Pregnancy')
+
+# plt.legend()
+
+# plt.show()
