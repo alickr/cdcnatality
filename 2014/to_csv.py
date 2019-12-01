@@ -5,15 +5,12 @@ import csv
 import pandas as pd
 from columns_2014 import list_columns_2014
 
-f = open("Nat2015PublicUS.c20160517.r20160907.txt", "r")
+f = open("data/txt/Nat2014PublicUS.c20150514.r20151022.txt", "r")
 
 file = open('../csv/cdc_2014.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(list_columns_2014) 
 
-
-
- 
 for item in f.readlines():
     df = {}
     df['DOB_YY'] = item[8:12]
