@@ -151,7 +151,7 @@ list_columns_2014 = [
     "MM_UHYST",
     "MM_AICU",
     "F_MM_MTR",
-    "F_MM_ PLAC",
+    "F_MM_PLAC",
     "F_MM_RUPT",
     "F_MM_UHYST",
     "F_MM_AICU",

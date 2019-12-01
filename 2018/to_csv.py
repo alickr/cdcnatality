@@ -52,7 +52,7 @@ for item in f.readlines():
     df['F_FHISP'] = item[160:161]
     df['FRACEHISP'] = item[161:162]
     df['FEDUC'] = item[162:163]
-    df['f_FEDUC'] = item[164:165]
+    df['F_FEDUC'] = item[164:165]
     df['PRIORLIVE'] = item[170:172]
     df['PRIORDEAD'] = item[172:174]
     df['PRIORTERM'] = item[174:176]
