@@ -6,9 +6,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import style
 from matplotlib import pyplot as plt
-%matplotlib inline
-style.use('ggplot')
-
+ 
 #Load dataset
 chunksize = 2000000
 for df_2016 in pd.read_csv('csv_folder/2016.csv', chunksize=chunksize):
@@ -45,7 +43,3 @@ prepd.first().count()
 preht = df_2016.groupby(['RF_PHYPE'])
 preht.first()
 preht.first().count()
-
-df_2016.groupby(['DOB_YY']).sum()['RF_PHYPE'].plot(title='pre-pregnancy hypertension: United States');
-fig = plt.gcf()
-fig.set_size_inches(16, 9)
