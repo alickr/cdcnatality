@@ -26,7 +26,7 @@ CREATE TABLES */
 /* COMMANDS TO LOAD DATA TO THE DATABASE */
 >LOAD DATA LOCAL INPATH '../data/csv/Nat2014us.csv' INTO TABLE tbl_nat_14;
 >LOAD DATA LOCAL INPATH '../data/csv/Nat2015us.csv' INTO TABLE tbl_nat_15;
->LOAD DATA LOCAL INPATH '../data/csv/Nat2017us.csv' INTO TABLE tbl_nat;
+>LOAD DATA LOCAL INPATH '../data/csv/Nat2017us.csv' INTO TABLE tbl_nat_17;
 >LOAD DATA LOCAL INPATH '../data/csv/Nat2018us.csv' INTO TABLE tbl_nat_18;
 
 /* QUERY TO DO GROUP BY MONTH */

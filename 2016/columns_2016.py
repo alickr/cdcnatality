@@ -1,4 +1,4 @@
-list_columns_2014 = [
+list_columns_2016 = [
     "DOB_YY",
     "DOB_MM",
     "DOB_TT",
@@ -34,13 +34,12 @@ list_columns_2014 = [
     "FRACE31",
     "FRACE6",
     "FRACE15",
-    "FBRACE",
     #"FHISPX",
     "FHISP_R",
     "F_FHISP",
     "FRACEHISP",
     "FEDUC",
-    "F_FEDUC",
+    "f_FEDUC",
     "PRIORLIVE",
     "PRIORDEAD",
     "PRIORTERM",
