@@ -2,9 +2,9 @@ import csv
 import pandas as pd
 from columns_2016 import list_columns_2016
 
-f = open("data/txt/Nat2016PublicUS.c20170517.r20190620.txt", "r")
+f = open("../data/txt/Nat2016PublicUS.c20170517.r20190620.txt", "r")
 
-file = open('../csv/cdc_2016.csv', 'w', encoding='utf-8', newline='')
+file = open('../data/csv/Nat2016us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(list_columns_2016) 
 
@@ -46,12 +46,13 @@ for item in f.readlines():
     df['FRACE31'] = item[150:152]
     df['FRACE6'] = item[152:153]
     df['FRACE15'] = item[153:155]
+    df['FBRACE'] = item[155:156] # exists here not in 2018
     #df['FHISPX'] = item[158:159]
     df['FHISP_R'] = item[159:160]
     df['F_FHISP'] = item[160:161]
     df['FRACEHISP'] = item[161:162]
     df['FEDUC'] = item[162:163]
-    df['f_FEDUC'] = item[164:165]
+    #df['f_FEDUC'] = item[164:165]
     df['PRIORLIVE'] = item[170:172]
     df['PRIORDEAD'] = item[172:174]
     df['PRIORTERM'] = item[174:176]
@@ -111,7 +112,7 @@ for item in f.readlines():
     df['RF_INFTR'] = item[324:325]
     df['RF_FEDRG'] = item[325:326]
     df['RF_ARTEC'] = item[326:327]
-    #df['f_RF_INFT'] = item[327:328]
+    df['f_RF_INFT'] = item[327:328]
     df['F_RF_INF_DRG'] = item[328:329]
     df['F_RF_INF_ART'] = item[329:330]
     df['RF_CESAR'] = item[330:331]
@@ -239,21 +240,6 @@ for item in f.readlines():
     df['ILIVE'] = item[567:568]
     df['BFED'] = item[568:569]
     df['F_BFED'] = item[569:570]
-    df['UBFACIL'] = item[1329:1330]
-    df['URF_DIAB'] = item[1330:1331]
-    df['URF_CHYPER'] = item[1331:1332]
-    df['URF_PHYPER'] = item[1332:1333]
-    df['URF_ECLAM'] = item[1333:1334]
-    df['UME_FORCP'] = item[1334:1335]
-    df['UME_VAC'] = item[1335:1336]
-    df['UOP_INDUC'] = item[1336:1337]
-    df['ULD_BREECH'] = item[1337:1338]
-    df['UCA_ANEN'] = item[1339:1340]
-    df['UCA_SPINA'] = item[1340:1341]
-    df['UCA_OMPHA'] = item[1341:1342]
-    df['UCA_CELFTLP'] = item[1342:1343]
-    df['UCA_HERNIA'] = item[1343:1344]
-    df['UCA_DOWNS'] = item[1344:1345]
     output.writerow(df.values())
 
 
