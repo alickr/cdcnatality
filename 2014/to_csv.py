@@ -5,9 +5,9 @@ import csv
 import pandas as pd
 from columns_2014 import list_columns_2014
 
-f = open("data/txt/Nat2014PublicUS.c20150514.r20151022.txt", "r")
+f = open("../data/txt/Nat2014PublicUS.c20150514.r20151022.txt", "r")
 
-file = open('../csv/cdc_2014.csv', 'w', encoding='utf-8', newline='')
+file = open('../data/csv/Nat2014us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(list_columns_2014) 
 
@@ -243,23 +243,6 @@ for item in f.readlines():
     df['ILIVE'] = item[567:568]
     df['BFED'] = item[568:569]
     df['F_BFED'] = item[569:570]
-
-    # Below Exist Extra vs. 2018
-    df['UBFACIL'] = item[1329:1330]
-    df['URF_DIAB'] = item[1330:1331]
-    df['URF_CHYPER'] = item[1331:1332]
-    df['URF_PHYPER'] = item[1332:1333]
-    df['URF_ECLAM'] = item[1333:1334]
-    df['UME_FORCP'] = item[1334:1335]
-    df['UME_VAC'] = item[1335:1336]
-    df['UOP_INDUC'] = item[1336:1337]
-    df['ULD_BREECH'] = item[1337:1338]
-    df['UCA_ANEN'] = item[1339:1340]
-    df['UCA_SPINA'] = item[1340:1341]
-    df['UCA_OMPHA'] = item[1341:1342]
-    df['UCA_CELFTLP'] = item[1342:1343]
-    df['UCA_HERNIA'] = item[1343:1344]
-    df['UCA_DOWNS'] = item[1344:1345]
     output.writerow(df.values())
 
 print("Done!")
