@@ -15,13 +15,15 @@ engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
                                
 # %time df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6,AB_NICU FROM all_years_data;', engine)
 # %time df = pd.read_sql_query('SELECT * FROM abnormal_conditions_of_the_newborn;', engine)
-%time df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6, MM_MTR,MM_PLAC,MM_RUPT,MM_UHYST,MM_AICU,AB_NICU  FROM all_years_proper_template;', engine)
+%time df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6,AB_NICU,AB_SURF,AB_ANTI,AB_SEIZ,F_AB_VENT,F_AB_VENT6,F_AB_NIUC,F_AB_SURFAC,F_AB_ANTIBIO,F_AB_SEIZ,NO_ABNORM,AB_NICU FROM all_years_data;', engine)
 # %time df = pd.read_sql_query('SELECT * FROM all_years_proper_template;', engine)
-df
+df.head()
+df.shape
+
 # --- Preparing Data For Training ---
 # y = dataset.iloc[:, 4].values
 # X = dataset.iloc[:, 0:4].values
-df.isnull()
+df.isnull().any()
 
 
 # BEGIN ENCODING
