@@ -63,8 +63,8 @@ random_forest.fit(X_train, Y_train)
 
 Y_pred = random_forest.predict(X_test)
 
-random_forest.score(X_train, Y_train)
-random_forest.get_params,random_forest.feature_importances_
+print(random_forest.score(X_train, Y_train))
+print(random_forest.get_params,random_forest.feature_importances_)
 
 Y_pred
 
