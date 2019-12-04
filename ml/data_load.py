@@ -1,20 +1,21 @@
-import copy
 import pandas as pd
-
-# --- Importing Dataset ---
-# Create a sql engine that connects to AWS RDS
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+
+load_dotenv()
+import os
 
 
-def fetchCollumns(columns_list):
+def fetchCollumns(columns_list, extra_query=''):
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
-                           .format(user="dev",
-                                   pw="rooting",
-                                   db="cdcnatality"))
+                           .format(user=os.getenv("DB_USER"),
+                                   pw=os.getenv("DB_PASSWORD"),
+                                   db=os.getenv("DB_DATABASE")))
 
     cols = ', '.join(columns_list)
+
     # %time df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6,AB_SURF,AB_ANTI,AB_SEIZ,F_AB_VENT,F_AB_VENT6,F_AB_NIUC,F_AB_SURFAC,F_AB_ANTIBIO,F_AB_SEIZ,NO_ABNORM,AB_NICU FROM all_years_data;', engine)
-    df = pd.read_sql_query('SELECT ' + cols + ' FROM all_years_proper_template;', engine)
+    df = pd.read_sql_query('SELECT ' + cols + ' FROM all_years_proper_template' + extra_query, engine)
 
     return df
 
