@@ -19,7 +19,7 @@ cols2 = ['DOB_YY', 'AB_AVEN1', 'AB_AVEN6', 'AB_SURF', 'AB_ANTI', 'AB_SEIZ', 'F_A
          'F_AB_NIUC', 'F_AB_SURFAC', 'F_AB_ANTIBIO', 'F_AB_SEIZ', 'NO_ABNORM', 'AB_NICU']
 
 df = data_load.fetchCollumns(cols1, extra_query=' limit 100')
-# modeling.label_encoding(df) #If Data is not encoded
+modeling.label_encoding(df) #If Data is not encoded
 x = df.loc[:, ~df.columns.isin(['AB_NICU', 'DOB_YY'])]  # Remove Specific column by name
 y = df.AB_NICU.values
 
