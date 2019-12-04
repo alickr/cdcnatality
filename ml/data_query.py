@@ -4,7 +4,6 @@ from sklearn import datasets #sample dataset
 import ml.data_load as data_load
 # from ml.data_load import df
 import ml.modeling as modeling
-
 from importlib import reload
 reload(modeling) #to reload module if we made some changes
 
@@ -13,7 +12,7 @@ reload(modeling) #to reload module if we made some changes
 # y = temp1.target
 
 df = data_load.df
-modeling.label_encoding(df)
+# modeling.label_encoding(df) #If Data is not encoded
 x = df.loc[:, ~df.columns.isin(['AB_NICU','DOB_YY'])] # Remove Specific column by name
 y = df.AB_NICU.values
 

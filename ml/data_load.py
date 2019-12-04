@@ -25,7 +25,7 @@ df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6,AB_SURF,AB_ANTI,AB_SEIZ,
 
 # %time df.corr(method ='pearson')
 
-x = df.loc[:, ~df.columns.isin(['AB_NICU','DOB_YY'])] # Remove Specific column by name
-y = df.AB_NICU.values
+# x = df.loc[:, ~df.columns.isin(['AB_NICU','DOB_YY'])] # Remove Specific column by name
+# y = df.AB_NICU.values
 
 
