@@ -6,6 +6,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 import xgboost as xgb
 from xgboost.sklearn import XGBClassifier
+from sklearn.metrics import confusion_matrix
 
 
 def label_encoding(df):
@@ -37,7 +38,7 @@ def support_vector_machine(x, y, test_size=0.33, random_state=0, **params):
 
 
 # Confusion Matrix
-def confusion_matrix(model, x_test, y_test):
+def get_confusion_matrix(model, x_test, y_test):
     y_pred = model.predict(x_test)
     return confusion_matrix(y_test, y_pred)
 
