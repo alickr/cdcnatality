@@ -24,6 +24,5 @@ x = df.loc[:, ~df.columns.isin(['AB_NICU', 'DOB_YY'])]  # Remove Specific column
 y = df.AB_NICU.values
 
 model, x_train, x_test, y_train, y_test = modeling.random_forest(x, y)  # create model and fit
-
 model.score(x_test, y_test)  # check model score
 modeling.get_confusion_matrix(model, x_test, y_test)  # print confusion matrix
