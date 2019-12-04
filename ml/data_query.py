@@ -8,10 +8,6 @@ from importlib import reload
 
 reload(modeling)  # to reload module if we made some changes
 
-# temp1 = datasets.load_breast_cancer() #dataset as temp1
-# x = temp1.data[:, :3]  # we only take the first 3 features.
-# y = temp1.target
-
 cols1 = ['DOB_YY', 'AB_AVEN1', 'AB_AVEN6', 'AB_SURF', 'AB_ANTI', 'AB_SEIZ', 'F_AB_VENT', 'F_AB_VENT6',
          'F_AB_NIUC', 'F_AB_SURFAC', 'F_AB_ANTIBIO', 'F_AB_SEIZ', 'NO_ABNORM', 'AB_NICU']
 
