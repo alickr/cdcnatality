@@ -12,7 +12,7 @@ reload(modeling) #to reload module if we made some changes
 # x = temp1.data[:, :3]  # we only take the first 3 features.
 # y = temp1.target
 
-df = data_load.x
+df = data_load.df
 modeling.label_encoding(df)
 x = df.loc[:, ~df.columns.isin(['AB_NICU','DOB_YY'])] # Remove Specific column by name
 y = df.AB_NICU.values
