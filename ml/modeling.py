@@ -7,7 +7,8 @@ from sklearn.svm import SVC
 import xgboost as xgb
 from xgboost.sklearn import XGBClassifier
 from sklearn.metrics import confusion_matrix
-
+import matplotlib.pyplot as plt  # Matlab-style plotting
+# %matplotlib inline
 
 def label_encoding(df):
     # Categorical boolean mask
@@ -49,3 +50,15 @@ def xgb_classifier(x, y, test_size_val=0.33, random_state_val=0, **params):
     model = XGBClassifier(**params)
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
+
+# Feature Importance Applies to XGB and Random Forest Only
+def get_feature_importance(x,prediction_model):
+    prediction_model.get_params,prediction_model.feature_importances_
+
+    important_features = pd.Series(data=prediction_model.feature_importances_,index=x.columns)
+    important_features.sort_values(ascending=False,inplace=True)
+    important_features
+
+    #plot graph of most import feature
+    important_features.plot(kind = 'bar')
+    return plt.show() # if run outside iPython
