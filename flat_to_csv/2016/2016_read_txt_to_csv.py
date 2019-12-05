@@ -4,6 +4,7 @@
 import csv
 import pandas as pd
 
+
 filepath = "data/Nat2016PublicUS.c20170517.r20190620.txt"
 y = open(filepath)
 file = open('csv_folder/2016.csv', 'w', encoding='utf-8', newline='')
