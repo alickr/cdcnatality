@@ -6,6 +6,7 @@ import ml.data_load as data_load
 import ml.modeling as modeling
 from importlib import reload
 import matplotlib.pyplot as plt  # Matlab-style plotting
+from ml.selected_columns import selected_columns
 # %matplotlib inline
 
 reload(modeling)  # to reload module if we made some changes
@@ -16,8 +17,8 @@ cols1 = ['DOB_YY', 'AB_AVEN1', 'AB_AVEN6', 'AB_SURF', 'AB_ANTI', 'AB_SEIZ', 'F_A
 cols2 = ['DOB_YY', 'AB_AVEN1', 'AB_AVEN6', 'AB_SURF', 'AB_ANTI', 'AB_SEIZ', 'F_AB_VENT', 'F_AB_VENT6',
          'F_AB_NIUC', 'F_AB_SURFAC', 'F_AB_ANTIBIO', 'F_AB_SEIZ', 'NO_ABNORM', 'AB_NICU']
 
-
-df = data_load.fetchCollumns(cols1, extra_query='LIMIT 1000') #extra_query='LIMIT 100'
+selected_columns
+df = data_load.fetchCollumns(selected_columns, extra_query='LIMIT 1000') #extra_query='LIMIT 100'
 # df.isnull().sum()
 df = df[df.AB_NICU != "U"] #Drop Column with U Unknown 
 df = df[df.AB_NICU != " "] #Drop Empty Space Columsn Not Treated as Nan
@@ -28,10 +29,10 @@ x = df.loc[:, ~df.columns.isin(['AB_NICU', 'DOB_YY'])]  # Remove Specific column
 y = df.AB_NICU.values
 
 # Random Forests
-xgb_modelrandom_forest_model, x_train1, x_test1, y_train1, y_test1 = modeling.random_forest(x, y)  # create model and fit
+random_forest_model, x_train1, x_test1, y_train1, y_test1 = modeling.random_forest(x, y)  # create model and fit
 random_forest_model.score(x_test1, y_test1)  # check model score
 modeling.get_confusion_matrix(random_forest_model, x_test1, y_test1)  # print confusion matrix
-modeling.get_feature_importance(x,random_forest_model)
+modeling.get_feature_importance(x,random_forest_model) # Plot Feature Importance
 
 #SVM
 svm_model, x_train2, x_test2, y_train2, y_test2 = modeling.support_vector_machine(x, y)  # create model and fit
@@ -42,7 +43,7 @@ modeling.get_confusion_matrix(svm_model, x_test2, y_test2)  # print confusion ma
 xgb_model, x_train3, x_test3, y_train3, y_test3 = modeling.xgb_classifier(x, y)  # create model and fit
 xgb_model.score(x_test3, y_test3)  # check model score
 modeling.get_confusion_matrix(xgb_model, x_test3, y_test3)  # print confusion matrix
-modeling.get_feature_importance(x,xgb_model)
+modeling.get_feature_importance(x,xgb_model) # Plot Feature Importance
 
 
 # df.AB_NICU.unique()
