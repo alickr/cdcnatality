@@ -2,7 +2,7 @@
 
 # DOB_YY Birth Year
 # DOB_MM Birth Month
-# DOB_TT Birth Time,
+# DOB_TT Time of Birth,
 # DOB_WK Birth Week,
 # BFACIL Birth Place,
 
@@ -10,8 +10,9 @@
 # --------------------------------------------
 # ORIGINS
 
-# MAGER bigint Mother’s Single Years of Age
+# MAGER Mother’s Single Years of Age
 # MBSTATE_REC Mother’s Nativity,
+# RESTATUS Residence Status
 # MBRACE Bridged Race Mother
 
 # MHISPX Mother’s Hispanic Origin
@@ -22,7 +23,7 @@
 
 
 # --------------------------------------------
-# EXTRAS
+
 # MAR_P Paternity Acknowledged
 # DMAR Marital Status
 # MEDUC Mother’s Education
@@ -115,6 +116,12 @@
 # ATTEND Attendant at Birth
 # MTRAN Mother Transferred
 # PAY Payment Source for Delivery
+
+
+# --------------------------------------------
+# --------------------------------------------
+# --------------------------------------------
+
 # APGAR5 Five Minute APGAR Score
 # APGAR10 Ten Minute APGAR Score
 

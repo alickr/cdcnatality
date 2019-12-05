@@ -15,14 +15,6 @@
 
 CREATE TABLES */
 
-
-/*COMMANDS TO COPY CSV FILES*/
->mkdir csv
->cp ~/tutorials/data/csv/Nat2014us.csv csv/2014.csv
->cp ~/tutorials/data/csv/Nat2015us.csv csv/2015.csv
->cp ~/tutorials/data/csv/Nat2017us.csv csv/2017.csv
->cp ~/tutorials/data/csv/Nat2018us.csv csv/2018.csv
-
 /* COMMANDS TO LOAD DATA TO THE DATABASE */
 >LOAD DATA LOCAL INPATH '../data/csv/Nat2014us.csv' INTO TABLE tbl_nat_14;
 >LOAD DATA LOCAL INPATH '../data/csv/Nat2015us.csv' INTO TABLE tbl_nat_15;
@@ -49,61 +41,61 @@ from cdc.tbl_nat
 where dob_mm = CAST(1 as CHAR(50))' > /home/hadoop/tutorials/data/natality18_january.csv
 
 
->hive -e 'select "DOB_YY", "MM_MTR", "MM_PLAC", "MM_RUPT", "MM_UHYST", "MM_AICU", "NO_MMORB", "AB_NICU"
+>hive -e 'select "MM_MTR", "MM_PLAC", "MM_RUPT", "MM_UHYST", "MM_AICU", "NO_MMORB", "AB_NICU"
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_18 
 where dob_mm = CAST(1 as CHAR(50))' > /home/hadoop/tutorials/data/maternal_morbidity_18_1.csv
 
 
->hive -e 'select "DOB_YY", "IP_GON", "IP_SYPH" ,"IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "AB_NICU"
+>hive -e 'select "IP_GON", "IP_SYPH" ,"IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "AB_NICU"
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_18 
 where dob_mm = CAST(1 as CHAR(50))' > /home/hadoop/tutorials/data/infections_18_1.csv
 
 
-hive -e 'select "DOB_YY", "MM_MTR", "MM_PLAC", "MM_RUPT", "MM_UHYST", "MM_AICU", "NO_MMORB","AB_NICU"
+hive -e 'select "MM_MTR", "MM_PLAC", "MM_RUPT", "MM_UHYST", "MM_AICU", "NO_MMORB","AB_NICU"
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_14 
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_15 
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_16
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_17
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(MM_MTR as CHAR(50)), CAST(MM_PLAC as CHAR(50)), CAST(MM_RUPT as CHAR(50)), CAST(MM_UHYST as CHAR(50)), CAST(MM_AICU as CHAR(50)), CAST(NO_MMORB as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_18 
 where dob_mm = CAST(1 as CHAR(50))' > /home/hadoop/tutorials/data/maternal_morbidity_1.csv
 
 
->hive -e 'select "DOB_YY", "IP_GON", "IP_SYPH" ,"IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "AB_NICU"
+>hive -e 'select "IP_GON", "IP_SYPH" ,"IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "AB_NICU"
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_14 
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_15 
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_16
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_17 
 where dob_mm = CAST(1 as CHAR(50))
 UNION ALL
-select CAST(DOB_YY as CHAR(50)), CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
+select CAST(IP_GON as CHAR(50)), CAST(IP_SYPH as CHAR(50)), CAST(IP_CHLAM as CHAR(50)), CAST(IP_HEPB as CHAR(50)), CAST(IP_HEPC as CHAR(50)), CAST(NO_INFEC as CHAR(50)), CAST(AB_NICU as CHAR(50))
 from cdc.tbl_nat_18 
 where dob_mm = CAST(1 as CHAR(50))' > /home/hadoop/tutorials/data/infections_1.csv
