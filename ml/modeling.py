@@ -30,8 +30,8 @@ def random_forest(x, y, test_size_val=0.33, random_state_val=0, **params):
 
 
 # Support Vector Machine
-def support_vector_machine(x, y, test_size=0.33, random_state=0, **params):
-    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size, random_state)
+def support_vector_machine(x, y, test_size_val=0.33, random_state_val=0, **params):
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
     model = SVC(**params)
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
