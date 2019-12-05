@@ -15,7 +15,7 @@ def fetchCollumns(columns_list, extra_query=''):
     cols = ', '.join(columns_list)
 
     # %time df = pd.read_sql_query('SELECT DOB_YY,AB_AVEN1,AB_AVEN6,AB_SURF,AB_ANTI,AB_SEIZ,F_AB_VENT,F_AB_VENT6,F_AB_NIUC,F_AB_SURFAC,F_AB_ANTIBIO,F_AB_SEIZ,NO_ABNORM,AB_NICU FROM all_years_data;', engine)
-    df = pd.read_sql_query('SELECT ' + cols + ' FROM all_years_proper_template' + extra_query, engine)
+    df = pd.read_sql_query('SELECT ' + cols + ' FROM all_years_data' + extra_query, engine)
 
     return df
 
