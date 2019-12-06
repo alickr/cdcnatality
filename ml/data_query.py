@@ -18,7 +18,8 @@ cols2 = ['DOB_YY', 'AB_AVEN1', 'AB_AVEN6', 'AB_SURF', 'AB_ANTI', 'AB_SEIZ', 'F_A
          'F_AB_NIUC', 'F_AB_SURFAC', 'F_AB_ANTIBIO', 'F_AB_SEIZ', 'NO_ABNORM', 'AB_NICU']
 
 selected_columns
-%time df = data_load.fetchCollumns(selected_columns, extra_query='LIMIT 1000 ') #extra_query='LIMIT 100'
+df = data_load.fetch_rand_data(selected_columns,rows_per_year=10000) #pull random 2000 rec per year
+# df = data_load.fetchCollumns(selected_columns, extra_query='LIMIT 1000') #extra_query='LIMIT 100'
 # df.isnull().sum()
 df = df[df.AB_NICU != "U"] #Drop Column with U Unknown 
 df = df[df.AB_NICU != " "] #Drop Empty Space Columsn Not Treated as Nan
