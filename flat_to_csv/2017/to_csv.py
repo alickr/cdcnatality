@@ -2,9 +2,9 @@ import csv
 import pandas as pd
 from columns_2017 import list_columns_2017
 
-f = open("../data/txt/Nat2017PublicUS.c20180516.r20180808.txt", "r")
+f = open("../../data/txt/Nat2017PublicUS.c20180516.r20180808.txt", "r")
 
-file = open('../data/csv/Nat2017us.csv', 'w', encoding='utf-8', newline='')
+file = open('../../data/csv/Nat2017us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(list_columns_2017) 
 
