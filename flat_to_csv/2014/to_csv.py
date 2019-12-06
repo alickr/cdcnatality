@@ -5,9 +5,9 @@ import csv
 import pandas as pd
 from columns_2014 import list_columns_2014
 
-f = open("../data/txt/Nat2014PublicUS.c20150514.r20151022.txt", "r")
+f = open("../../data/txt/Nat2014PublicUS.c20150514.r20151022.txt", "r")
 
-file = open('../data/csv/Nat2014us.csv', 'w', encoding='utf-8', newline='')
+file = open('../../data/csv/Nat2014us.csv', 'w', encoding='utf-8', newline='')
 output = csv.writer(file)
 output.writerow(list_columns_2014) 
 
