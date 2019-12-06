@@ -19,10 +19,10 @@ cdc.csv
 csv/*
 # pyspark/
 # Visual Studio Code
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
-!.vscode/launch.json
+!.vscode/launch.jsone
 !.vscode/extensions.json
 *.code-workspace
 
