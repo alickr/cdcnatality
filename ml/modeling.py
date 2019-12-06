@@ -25,7 +25,7 @@ def label_encoding(df):
 # Random Forests
 def random_forest(x, y, test_size_val=0.33, random_state_val=0, **params):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
-    model = RandomForestClassifier(n_estimators=100, oob_score=True, **params)  # max_features=5
+    model = RandomForestClassifier(n_estimators=100, oob_score=True, n_jobs=-1, **params)  # max_features=5
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
 
@@ -47,7 +47,7 @@ def get_confusion_matrix(model, x_test, y_test):
 # xgb_classifier
 def xgb_classifier(x, y, test_size_val=0.33, random_state_val=0, **params):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
-    model = XGBClassifier(**params)
+    model = XGBClassifier(nthread = -1, n_jobs = -1, **params)
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
 
