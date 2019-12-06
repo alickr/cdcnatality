@@ -4,10 +4,15 @@ pd.set_option('display.max_columns', 100)
 #load csv
 df = pd.read_csv("results_dec.csv", sep='\t')
 
+# delete AB_NICU na columns
+
+
+df['AB_NICU'].dropna()
+
 #imputation
 # unknown or not stated
 impute_u = ["RF_PDIAB", "RF_GDIAB", "RF_PHYPE", "RF_GHYPE", "RF_EHYPE", "RF_PPTERM", "RF_INFTR","RF_FEDRG", "RF_ARTEC",
- "RF_CESAR","NO_RISKS", "IP_GON", "IP_SYPH", "IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "AB_NICU", "CIG_REC", "WIC" ]
+ "RF_CESAR","NO_RISKS", "IP_GON", "IP_SYPH", "IP_CHLAM", "IP_HEPB", "IP_HEPC", "NO_INFEC", "CIG_REC", "WIC" ]
 
 for item in impute_u:
     df[item].fillna("U", inplace=True)    
