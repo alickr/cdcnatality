@@ -28,7 +28,6 @@ def fetchCollumns(columns_list, extra_query=''):
 
 
 def fetch_rand_data(columns_list, rows_per_year=1000):
-
     engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
                            .format(user=os.getenv("DB_USER"),
                                    pw=os.getenv("DB_PASSWORD"),
@@ -39,12 +38,12 @@ def fetch_rand_data(columns_list, rows_per_year=1000):
 
     cols = ', '.join(columns_list)
 
-    rows_per_year = 1000
     li = []
     for index, row in chunk_head.iterrows():
-        li.extend([random.randint(row['id_min'], row['id_max']) for i in range(rows_per_year)])
+        li.extend([random.randint(row['id_min'], row['id_max']) for i in range(rows_per_year+1)])
 
     li.sort()
+    id_list = ','.join(str(x) for x in li)
 
     if type(os.getenv("DB_TABLE")) != 'NoneType':
         database_table = os.getenv("DB_TABLE")
@@ -52,7 +51,7 @@ def fetch_rand_data(columns_list, rows_per_year=1000):
         database_table = "all_years_proper_template"
 
     chunk = pd.read_sql_query('SELECT ' + cols + ' FROM ' + os.getenv("DB_DATABASE") + '.' + database_table +
-                              ' WHERE id IN (' + ','.join(li) + ')', engine)
+                              ' WHERE id IN (' + id_list + ')', engine)
 
     return chunk
 
