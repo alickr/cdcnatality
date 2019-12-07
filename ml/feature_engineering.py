@@ -2,7 +2,7 @@ import pandas as pd
 pd.set_option('display.max_columns', 100)
 
 #load csv
-df = pd.read_csv("results_dec.csv", sep='\t')
+df = pd.read_csv("../analysis/results_dec.csv", sep='\t')
 
 #imputation
 def impute(df):
@@ -53,6 +53,8 @@ def parseColumns(df):
     for item in cols_to_parse:
         df[item] = pd.DataFrame(list(map(parseToInt, df[item])))
 
+    return df
+
 
 
 #find correlation
@@ -73,3 +75,10 @@ def filterColumns(df):
     df_final = df_final[['RF_PDIAB','RF_PHYPE','RF_GHYPE','RF_EHYPE','RF_PPTERM','RF_INFTR','RF_FEDRG','AB_NICU']]
 
     return df_final
+
+
+df = impute(df) 
+df = parseColumns(df)
+df = filterColumns(df)
+
+print(df.head(10))
