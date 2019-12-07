@@ -9,26 +9,14 @@ from xgboost.sklearn import XGBClassifier
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt  # Matlab-style plotting
 # %matplotlib inline
-
-def label_encoding(df):
-    # Categorical boolean mask
-    categorical_feature_mask = df.dtypes == object
-    # filter categorical columns using mask and turn it into a list
-    categorical_cols = df.columns[categorical_feature_mask].tolist()
-
-    le = LabelEncoder()
-    # apply le on categorical feature columns
-    df[categorical_cols] = df[categorical_cols].apply(lambda col: le.fit_transform(col))
-    return df
-
+# import seaborn as sns
 
 # Random Forests
 def random_forest(x, y, test_size_val=0.33, random_state_val=0, **params):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
-    model = RandomForestClassifier(n_estimators=100, oob_score=True, **params)  # max_features=5
+    model = RandomForestClassifier(n_estimators=100, oob_score=True, n_jobs=-1, **params)  # max_features=5
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
-
 
 # Support Vector Machine
 def support_vector_machine(x, y, test_size_val=0.33, random_state_val=0, **params):
@@ -37,17 +25,10 @@ def support_vector_machine(x, y, test_size_val=0.33, random_state_val=0, **param
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
 
-
-# Confusion Matrix
-def get_confusion_matrix(model, x_test, y_test):
-    y_pred = model.predict(x_test)
-    return confusion_matrix(y_test, y_pred)
-
-
 # xgb_classifier
 def xgb_classifier(x, y, test_size_val=0.33, random_state_val=0, **params):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
-    model = XGBClassifier(**params)
+    model = XGBClassifier(nthread = -1, n_jobs = -1, **params)
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
 
@@ -62,3 +43,35 @@ def get_feature_importance(x,prediction_model):
     #plot graph of most import feature
     important_features.plot(kind = 'bar')
     return plt.show() # if run outside iPython
+
+def label_encoding(df):
+    # Categorical boolean mask
+    categorical_feature_mask = df.dtypes == object
+    # filter categorical columns using mask and turn it into a list
+    categorical_cols = df.columns[categorical_feature_mask].tolist()
+
+    le = LabelEncoder()
+    # apply le on categorical feature columns
+    df[categorical_cols] = df[categorical_cols].apply(lambda col: le.fit_transform(col))
+    return df
+
+# Confusion Matrix
+def get_confusion_matrix(model, x_test, y_test):
+    y_pred = model.predict(x_test)
+    return confusion_matrix(y_test, y_pred,labels=[0, 1])
+
+def get_normalized_confusion_matrix(classifier, x_test, y_test):
+    y_pred = classifier.predict(x_test)
+    C = confusion_matrix(y_test, y_pred,labels=[0, 1])
+    C = C / C.astype(np.float).sum(axis=0)
+    return C
+    
+    # Return a Seaborn Preaty Graph
+    # cm = confusion_matrix(y_test, y_pred,labels=[0, 1])
+    # # Normalise
+    # cmn = cm.astype('float') / cm.sum(axis=1)[:, np.newaxis]
+    # fig, ax = plt.subplots(figsize=(10,10))
+    # sns.heatmap(cmn, annot=True, fmt='.2f', xticklabels=['0','1'], yticklabels=['0','1'])
+    # plt.ylabel('Actual')
+    # plt.xlabel('Predicted')
+    # return plt.show(block=False)
