@@ -11,6 +11,9 @@ Nat2018PublicUS.c20190509.r20190717.txt
 2018/UserGuide2018.pdf
 __pycache__
 csv/
+analysis/results_jan.csv
+analysis/results_june.csv
+analysis/results_dec.csv
 csv_folder/
 .Rhistory
 test.py
@@ -157,3 +160,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+ml/.~lock.columns selected.xlsx#
