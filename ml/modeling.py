@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt  # Matlab-style plotting
 # Random Forests
 def random_forest(x, y, test_size_val=0.33, random_state_val=0, **params):
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
-    model = RandomForestClassifier(n_estimators=100, oob_score=True, n_jobs=-1, **params)  # max_features=5
+    model = RandomForestClassifier(**params)  # max_features=5 n_estimators=100, oob_score=True, n_jobs=-1, 
     model.fit(x_train, y_train)
     return model, x_train, x_test, y_train, y_test
 
