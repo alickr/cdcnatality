@@ -1,7 +1,8 @@
-import pandas as pd
-from sqlalchemy import create_engine
-from dotenv import load_dotenv
 import random
+
+import pandas as pd
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
 
 load_dotenv()
 import os
@@ -36,36 +37,35 @@ def fetch_rand_data(columns_list, rows_per_year=1000):
     chunk_head = pd.read_sql_query(
         'SELECT MAX(id) as id_max,  MIN(id) as id_min, DOB_YY FROM all_years_data GROUP BY DOB_YY', engine)
 
+    final = pd.DataFrame()
     cols = ', '.join(columns_list)
-
-    li = []
-    for index, row in chunk_head.iterrows():
-        li.extend([random.randint(row['id_min'], row['id_max']) for i in range(rows_per_year+1)])
-
-    li.sort()
-    id_list = ','.join(str(x) for x in li)
-
     if type(os.getenv("DB_TABLE")) != 'NoneType':
         database_table = os.getenv("DB_TABLE")
     else:
         database_table = "all_years_proper_template"
 
-    chunk = pd.read_sql_query('SELECT ' + cols + ' FROM ' + os.getenv("DB_DATABASE") + '.' + database_table +
-                              ' WHERE id IN (' + id_list + ')', engine)
+    li = []
+    for index, row in chunk_head.iterrows():
+        li.extend([random.randint(row['id_min'], row['id_max']) for i in range(rows_per_year + 1)])
 
-    return chunk
+    li.sort()
+    m = len(li)
+    limit = 1000
+    temp1 = range(limit, m + 1, limit)
+    temp2 = 0
+    for temp3 in temp1:
+        id_list = li[temp2: temp3]
+        id_list = ','.join(str(x) for x in id_list)
 
-# df.head()
-# df.shape
+        if (temp2 == 0):
+            final = pd.read_sql_query('SELECT ' + cols + ' FROM ' + os.getenv("DB_DATABASE") + '.' + database_table +
+                                      ' WHERE id IN (' + id_list + ')', engine)
+        else:
+            chunk = pd.read_sql_query('SELECT ' + cols + ' FROM ' + os.getenv("DB_DATABASE") + '.' + database_table +
+                                      ' WHERE id IN (' + id_list + ')', engine)
 
-# --- Preparing Data For Training ---
-# y = dataset.iloc[:, 4].values
-# X = dataset.iloc[:, 0:4].values
-# df.isnull().any()
+            final = pd.concat([final, chunk])
 
-# %time label_encoding(df)
+        temp2 = temp3
 
-# %time df.corr(method ='pearson')
-
-# x = df.loc[:, ~df.columns.isin(['AB_NICU','DOB_YY'])] # Remove Specific column by name
-# y = df.AB_NICU.values
+    return final
