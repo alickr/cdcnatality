@@ -6,7 +6,9 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 import xgboost as xgb
 from xgboost.sklearn import XGBClassifier
+from sklearn.tree import DecisionTreeClassifier # Import Decision Tree Classifier
 from sklearn.metrics import confusion_matrix
+from sklearn.linear_model import LogisticRegression
 import matplotlib.pyplot as plt  # Matlab-style plotting
 # %matplotlib inline
 # import seaborn as sns
@@ -58,14 +60,28 @@ def label_encoding(df):
 # Confusion Matrix
 def get_confusion_matrix(model, x_test, y_test):
     y_pred = model.predict(x_test)
-    return confusion_matrix(y_test, y_pred,labels=[0, 1])
+    return pd.DataFrame(
+            confusion_matrix(y_test, y_pred),
+            columns=['Predicted NO', 'Predicted YES'],
+            index=['True NO', 'True YES']
+        )
+
+    # return confusion_matrix(y_test, y_pred)
 
 def get_normalized_confusion_matrix(classifier, x_test, y_test):
     y_pred = classifier.predict(x_test)
-    C = confusion_matrix(y_test, y_pred,labels=[0, 1])
+    C = confusion_matrix(y_test, y_pred)
     C = C / C.astype(np.float).sum(axis=0)
-    return C
+
+    return pd.DataFrame(
+            C,
+            columns=['Predicted NO', 'Predicted YES'],
+            index=['True NO', 'True YES']
+        )
+    # return C
     
+    
+
     # Return a Seaborn Preaty Graph
     # cm = confusion_matrix(y_test, y_pred,labels=[0, 1])
     # # Normalise
@@ -75,3 +91,27 @@ def get_normalized_confusion_matrix(classifier, x_test, y_test):
     # plt.ylabel('Actual')
     # plt.xlabel('Predicted')
     # return plt.show(block=False)
+
+    # Support Vector Machine
+def decision_tree_classifier(x, y, test_size_val=0.33, random_state_val=0, **params):
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
+    # Create Decision Tree classifer object
+    model = DecisionTreeClassifier(**params)
+
+    # Train Decision Tree Classifer
+    model = model.fit(x_train,y_train)
+
+    #Predict the response for test dataset
+    # y_pred = model.predict(X_test)
+
+    return model, x_train, x_test, y_train, y_test
+
+def logistic_regression_classifier(x, y, test_size_val=0.33, random_state_val=0, **params):
+    x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = test_size_val, random_state = random_state_val)
+    model = LogisticRegression(**params)
+    model.fit(x_train, y_train)
+    print('Accuracy of Logistic regression classifier on training set: {:.2f}'
+     .format(model.score(x_train, y_train)))
+    print('Accuracy of Logistic regression classifier on test set: {:.2f}'
+     .format(model.score(x_test, y_test)))
+    return model, x_train, x_test, y_train, y_test
